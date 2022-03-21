@@ -1,5 +1,6 @@
 //Files werden nur gelesen, wenn sie im cmake-build-debug sind
 //test
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,7 +8,7 @@
 
 using namespace std;
 
-void readFile(){
+void getEntries(){
     //verfügbare files: AAPL.csv, AMZN.csv, BABA.csv (Alibaba), FB.csv, GOOG.csv, INTC.csv (Intel),
     // MSFT.csv, NTFL.csv, NVDA.csv (Nvidia), TCEHY.csv (Tencent), //alle im data dir gespeichert
     string filename, zeile, eintrag;
@@ -27,8 +28,8 @@ void readFile(){
 
             stringstream zeileFormat(zeile); //wandelt string zeile in ein file-ähnliches Format
 
-            while(getline(zeileFormat, eintrag, ',')){// var eintrag: Wert zwischen zwei kommas oder newline
-                cout << eintrag << " ";//debug
+            while(getline(zeileFormat, eintrag, ',')){// var eintrag: Wert wird bis zu einem Komma eingelesen
+                cout << eintrag << " "; //debug
                 //einfügen in Hashtabelle Zeile
             }
         }
@@ -37,7 +38,7 @@ void readFile(){
     //return hashtable;
 }
 int main () {
-    readFile();
+    getEntries();
 
     return 0;
 }
