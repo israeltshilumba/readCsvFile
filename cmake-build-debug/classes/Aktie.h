@@ -21,16 +21,16 @@ class aktie
 
         bool printAktie(); //schreibt name und number
         std::string getName();
-
+        int getAnum();
         void deleteAktie(hashTable* nameTable, hashTable* shortTable);
-
+        //new -> Hier ist das csv File in Form eines Arrays gespeichert
+        //std::string entries[arrayLength][arrayDepth];
     protected:
 
     private:
         std::string a_name;
         int a_num;
-        //new -> Hier ist das csv File in Form eines Arrays gespeichert
-        std::string entries[arrayLength][arrayDepth];
+
 };
 
 #endif // AKTIE_H

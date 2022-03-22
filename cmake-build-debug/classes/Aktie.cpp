@@ -29,6 +29,10 @@ std::string aktie::getName()
 {
     return a_name;
 }
+//new -> a_num getter
+int aktie::getAnum(){
+    return a_num;
+}
 
 void aktie::deleteAktie(hashTable* nameTable, hashTable* shortTable)  //nameTable: vollen Namen short: kürzel
 {

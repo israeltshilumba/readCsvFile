@@ -25,7 +25,7 @@ public:
     hashNode* getNode(int key);
     hashNode* getNode(int key, std::string name);
     void printTable();
-
+    void saveTable(bool saveState);
 protected:
 
 private:

@@ -18,8 +18,10 @@ public:
     int getDepth();
     void changeDepth(int value);
     aktie* getAktie();
+    aktie* getAnum();
     void setAktie(aktie* newAktie);
-
+    // new: damit alle Eintrage einer Aktie geprintet werden
+    // std::string entries[arrayLength][arrayDepth];
 private:
     int n_Depth;
     aktie* n_Aktie;

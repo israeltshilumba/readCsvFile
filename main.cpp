@@ -17,16 +17,16 @@ using namespace std;
 
 
 //toDo array Aktie done
-//toDo aus void get entries, in zwei funktionen einteilen -> eines das durchgeht, eines das array macht
+//toDo aus void get entries, in zwei funktionen einteilen -> eines das durchgeht, eines das array macht done
 
 //abspeichern? durch hash durchegehen -> Bei Eintrag speichern
-//importierte sachen abspeichern
-//abspeichern in seperates file
-//save file von json Form, über dateiname {key, dateiname} -> immer wieder importieren
+//importierte sachen abspeichern ?
+//toDo abspeichern in seperates file, teilweise done
+//save file über dateiname {key, dateiname} -> immer wieder importieren
 
 bool addAktie(hashTable*, hashNode*);
 hashNode* convertToNode(string, int);
-void Menue(hashTable*, hashTable*);
+void Menue(hashTable*, hashTable*, bool saveState);
 
 
 class fileData{
@@ -35,7 +35,7 @@ public:
 };
 
 
-fileData *getEntries(fileData *tmp){
+void getEntries(fileData *tmp){
 
     //verfügbare files: AAPL.csv, AMZN.csv, BABA.csv (Alibaba), FB.csv, GOOG.csv, INTC.csv (Intel),
     // MSFT.csv, NTFL.csv, NVDA.csv (Nvidia), TCEHY.csv (Tencent), //alle im data dir gespeichert
@@ -52,7 +52,7 @@ fileData *getEntries(fileData *tmp){
         cout << "\nFile offen";
 
         int i = 0; //for array
-        int j = 0;
+        int j;
 
         while(getline(FILE, zeile)){ // var zeile: Eintrag bis newline-char
 
@@ -72,10 +72,10 @@ fileData *getEntries(fileData *tmp){
         }
     } else cout << "\nFile nicht offen";
 
-    return tmp;
+    //return tmp;
 }
 
-void printArray(fileData *tmp){
+void printArray(fileData *tmp){ //printet alle Entries einer Node
     for (int i = 0; i < arrayLength; i++){
         cout << endl;
         for (int j = 0; j < arrayDepth; j++){
@@ -85,6 +85,7 @@ void printArray(fileData *tmp){
 }
 
 int main () {
+    bool saveState = false;
     /*
     fileData *test = new fileData;
     test = getEntries(test);
@@ -111,7 +112,7 @@ int main () {
     int hash = hashTable::hash(hashTable::toKey(input));
     nameTable.getNode(hash)->getAktie()->deleteAktie(&nameTable, &shortTable);*/
 
-    Menue(&nameTable, &shortTable);
+    Menue(&nameTable, &shortTable, saveState);
 
     cout << "--------------------------------------" << endl;
     nameTable.printTable();
@@ -120,11 +121,11 @@ int main () {
     return 0;
 }
 
-void Menue(hashTable* nameTable, hashTable* shortTable)
+void Menue(hashTable* nameTable, hashTable* shortTable, bool saveState)
 {
     char input;
-    do{
-        cout << "Select Action: (a)dd | (d)elete | (p)rint | (i)mport | (s)ave | (e)xit" << endl;
+    do{ // Problem: man kommt aus der Schleife nicht raus
+        cout << "Select Action: (a)dd | (d)elete | (p)rint | (v)alues | (i)mport | (s)ave | (e)xit" << endl;
         cin >> input;
         switch(input){
             case 'a':
@@ -142,12 +143,21 @@ void Menue(hashTable* nameTable, hashTable* shortTable)
             case 'i':
             case 'I': break;
             case 's':
-            case 'S': break;
+            case 'S': {
+
+                if(saveState) { remove("data/saveData.txt"); saveState = false;}
+                nameTable ->saveTable(saveState);
+                saveState = true;
+            }   break;
             case 'e':
             case 'E': break;
+            case 'v':
+            case 'V': break; //values anhand von
             default: input = 0;
         }
-    } while (input != 0);
+    } while (input != 0 && input != 'e' && input != 'E'); //eingabe endet nach e oder E
+
+
 }
 
 bool addAktie(hashTable* myTable, hashNode* newNode){ //

@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Hashtable.h"
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
+
+#include "Hashtable.h"
+
 
 using namespace std;
 
@@ -37,7 +42,9 @@ bool hashTable::addAktie(int key, hashNode* Node)
                 break;
             }
         }
-        if(spacefound){ //platz gefunden, an der STelle vom Pointer
+        if(spacefound){ //platz gefunden, an der Stelle vom Pointer
+
+            //insert code here
             Tabelle[hash(pointer)] = Node;
             Tabelle[hashkey]->changeDepth(1);
             cout << "spaced insert" << endl;
@@ -70,7 +77,7 @@ hashNode* hashTable::getNode(int key, std::string name)
     aktie* myAktie = this->getNode(key)->getAktie();
     int Depth = this->getNode(key)->getDepth();
 
-    if (myAktie == NULL && Depth == 0){ //aaktie am ort gelöscht
+    if (myAktie == NULL && Depth == 0){ //Aktie am ort gelöscht
         cout << "no Aktien at this Node" << endl;
         return NULL;
     } else if (myAktie == NULL && Depth > 0){ //aktie gelöscht, aber weitere Einträge an der Stelle
@@ -129,5 +136,37 @@ void hashTable::printTable() //alle Aktien
         } else {
             cout << "is Empty" << endl;
         }
+    }
+}
+//new Tabelle wird in ein Textfile abgespeichert
+void hashTable::saveTable(bool saveState){ //Tabelle wird in Form der printTable() methode gespeichert, wird bisher nur appended
+    string filename;
+
+    filename = "data/saveData.txt";
+    fstream FILE;
+
+
+    if (!saveState){
+        FILE.open(filename, ios_base::app);
+        if (FILE.is_open()) {
+            cout << "\nFile has been saved!\n";
+
+            for (int x = 0; x < 20; x++) {
+                FILE << "Index " << x << " : ";
+                if (Tabelle[x] != NULL) {
+                    FILE << " Depth : " << Tabelle[x]->getDepth() << " | ";
+                    if (Tabelle[x]->getAktie() != NULL) {
+                        FILE << Tabelle[x]->getAktie()->getName() << " : " << Tabelle[x]->getAktie()->getAnum() << endl;
+                    } else {
+                        FILE << " no Aktie at this depth" << endl;
+                    }
+                } else {
+                    FILE << "is Empty" << endl;
+                }
+            }
+        } else cout << "\nFile could not open";
+    } else {
+        remove("filename");
+
     }
 }
