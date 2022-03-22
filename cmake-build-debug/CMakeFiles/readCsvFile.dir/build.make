@@ -78,19 +78,64 @@ CMakeFiles/readCsvFile.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/readCsvFile.dir/main.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\isilu\CLionProjects\readCsvFile\main.cpp -o CMakeFiles\readCsvFile.dir\main.cpp.s
 
+CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.obj: CMakeFiles/readCsvFile.dir/flags.make
+CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.obj: classes/Aktie.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\readCsvFile.dir\classes\Aktie.cpp.obj -c C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\Aktie.cpp
+
+CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\Aktie.cpp > CMakeFiles\readCsvFile.dir\classes\Aktie.cpp.i
+
+CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\Aktie.cpp -o CMakeFiles\readCsvFile.dir\classes\Aktie.cpp.s
+
+CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.obj: CMakeFiles/readCsvFile.dir/flags.make
+CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.obj: classes/HashNode.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\readCsvFile.dir\classes\HashNode.cpp.obj -c C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\HashNode.cpp
+
+CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\HashNode.cpp > CMakeFiles\readCsvFile.dir\classes\HashNode.cpp.i
+
+CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\HashNode.cpp -o CMakeFiles\readCsvFile.dir\classes\HashNode.cpp.s
+
+CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.obj: CMakeFiles/readCsvFile.dir/flags.make
+CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.obj: classes/Hashtable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\readCsvFile.dir\classes\Hashtable.cpp.obj -c C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\Hashtable.cpp
+
+CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\Hashtable.cpp > CMakeFiles\readCsvFile.dir\classes\Hashtable.cpp.i
+
+CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\classes\Hashtable.cpp -o CMakeFiles\readCsvFile.dir\classes\Hashtable.cpp.s
+
 # Object files for target readCsvFile
 readCsvFile_OBJECTS = \
-"CMakeFiles/readCsvFile.dir/main.cpp.obj"
+"CMakeFiles/readCsvFile.dir/main.cpp.obj" \
+"CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.obj" \
+"CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.obj" \
+"CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.obj"
 
 # External object files for target readCsvFile
 readCsvFile_EXTERNAL_OBJECTS =
 
 readCsvFile.exe: CMakeFiles/readCsvFile.dir/main.cpp.obj
+readCsvFile.exe: CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.obj
+readCsvFile.exe: CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.obj
+readCsvFile.exe: CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.obj
 readCsvFile.exe: CMakeFiles/readCsvFile.dir/build.make
 readCsvFile.exe: CMakeFiles/readCsvFile.dir/linklibs.rsp
 readCsvFile.exe: CMakeFiles/readCsvFile.dir/objects1.rsp
 readCsvFile.exe: CMakeFiles/readCsvFile.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable readCsvFile.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\isilu\CLionProjects\readCsvFile\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable readCsvFile.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\readCsvFile.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

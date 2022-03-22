@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Aktie.h
+string
+-
+Hashtable.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Hashtable.h
+HashNode.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/HashNode.h
+
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/HashNode.h
+Hashtable.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Hashtable.h
+Aktie.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Aktie.h
+
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Hashtable.h
+string
+-
+HashNode.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/HashNode.h
+Aktie.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Aktie.h
+
 C:/Users/isilu/CLionProjects/readCsvFile/main.cpp
 iostream
 -
@@ -15,4 +37,10 @@ string
 -
 sstream
 -
+cmake-build-debug/classes/Hashtable.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Hashtable.h
+cmake-build-debug/classes/Aktie.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Aktie.h
+cmake-build-debug/classes/HashNode.h
+C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/HashNode.h
 

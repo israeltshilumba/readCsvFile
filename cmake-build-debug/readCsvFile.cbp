@@ -80,6 +80,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Aktie.cpp">
+			<Option target="readCsvFile"/>
+		</Unit>
+		<Unit filename="C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Aktie.h">
+			<Option target="readCsvFile"/>
+		</Unit>
+		<Unit filename="C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/HashNode.cpp">
+			<Option target="readCsvFile"/>
+		</Unit>
+		<Unit filename="C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/HashNode.h">
+			<Option target="readCsvFile"/>
+		</Unit>
+		<Unit filename="C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Hashtable.cpp">
+			<Option target="readCsvFile"/>
+		</Unit>
+		<Unit filename="C:/Users/isilu/CLionProjects/readCsvFile/cmake-build-debug/classes/Hashtable.h">
+			<Option target="readCsvFile"/>
+		</Unit>
 		<Unit filename="C:/Users/isilu/CLionProjects/readCsvFile/main.cpp">
 			<Option target="readCsvFile"/>
 		</Unit>

@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.obj"
+  "CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.obj"
+  "CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.obj"
   "CMakeFiles/readCsvFile.dir/main.cpp.obj"
   "libreadCsvFile.dll.a"
   "readCsvFile.exe"

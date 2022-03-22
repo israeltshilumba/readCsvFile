@@ -128,6 +128,78 @@ readCsvFile/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/build
 .PHONY : readCsvFile/fast
 
+classes/Aktie.obj: classes/Aktie.cpp.obj
+.PHONY : classes/Aktie.obj
+
+# target to build an object file
+classes/Aktie.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.obj
+.PHONY : classes/Aktie.cpp.obj
+
+classes/Aktie.i: classes/Aktie.cpp.i
+.PHONY : classes/Aktie.i
+
+# target to preprocess a source file
+classes/Aktie.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.i
+.PHONY : classes/Aktie.cpp.i
+
+classes/Aktie.s: classes/Aktie.cpp.s
+.PHONY : classes/Aktie.s
+
+# target to generate assembly for a file
+classes/Aktie.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/Aktie.cpp.s
+.PHONY : classes/Aktie.cpp.s
+
+classes/HashNode.obj: classes/HashNode.cpp.obj
+.PHONY : classes/HashNode.obj
+
+# target to build an object file
+classes/HashNode.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.obj
+.PHONY : classes/HashNode.cpp.obj
+
+classes/HashNode.i: classes/HashNode.cpp.i
+.PHONY : classes/HashNode.i
+
+# target to preprocess a source file
+classes/HashNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.i
+.PHONY : classes/HashNode.cpp.i
+
+classes/HashNode.s: classes/HashNode.cpp.s
+.PHONY : classes/HashNode.s
+
+# target to generate assembly for a file
+classes/HashNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/HashNode.cpp.s
+.PHONY : classes/HashNode.cpp.s
+
+classes/Hashtable.obj: classes/Hashtable.cpp.obj
+.PHONY : classes/Hashtable.obj
+
+# target to build an object file
+classes/Hashtable.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.obj
+.PHONY : classes/Hashtable.cpp.obj
+
+classes/Hashtable.i: classes/Hashtable.cpp.i
+.PHONY : classes/Hashtable.i
+
+# target to preprocess a source file
+classes/Hashtable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.i
+.PHONY : classes/Hashtable.cpp.i
+
+classes/Hashtable.s: classes/Hashtable.cpp.s
+.PHONY : classes/Hashtable.s
+
+# target to generate assembly for a file
+classes/Hashtable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\readCsvFile.dir\build.make CMakeFiles/readCsvFile.dir/classes/Hashtable.cpp.s
+.PHONY : classes/Hashtable.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -161,6 +233,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... readCsvFile
+	@echo ... classes/Aktie.obj
+	@echo ... classes/Aktie.i
+	@echo ... classes/Aktie.s
+	@echo ... classes/HashNode.obj
+	@echo ... classes/HashNode.i
+	@echo ... classes/HashNode.s
+	@echo ... classes/Hashtable.obj
+	@echo ... classes/Hashtable.i
+	@echo ... classes/Hashtable.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
