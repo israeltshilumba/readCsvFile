@@ -8,28 +8,25 @@
 using namespace std;
 
 aktie::aktie(){
-    cout << "\nBitte geben Sie den Pfad an, andem sich Ihr CSV File befindet:\n";
-    cin >> this->filename;
+    //cout << "\nBitte geben Sie den Pfad an, andem sich Ihr CSV File befindet:\n";
+    //cin >> this->filename;
 
-    cout << "\nShortName:\n";
-    std::cin >> this->shortName;
+
 
     cout << "\nLongName:\n";
     std::cin >> this->longName;
 
-    getEntries();
+    cout << "\nShortName:\n";
+    std::cin >> this->shortName;
+    // getEntries();
 };
 
-void aktie::printArray(){ //printet alle Entries einer Node
-    for (int i = 0; i < arrayLength; i++){
-        cout << endl;
-        for (int j = 0; j < arrayDepth; j++){
-            cout << this->entries[i][j] << " /   ";
-        }
-    }
-    cout << endl;
+void aktie::setFilename(){
+    cout << "\n Please enter the csv filename\n";
+    cin >> this->filename;
+    filename = "data/" + filename + ".csv";
+    getEntries();
 }
-
 void aktie::getEntries() {
     //verfügbare files: AAPL.csv, AMZN.csv, BABA.csv (Alibaba), FB.csv, GOOG.csv, INTC.csv (Intel),
     // MSFT.csv, NTFL.csv, NVDA.csv (Nvidia), TCEHY.csv (Tencent), //alle im data dir gespeichert
@@ -67,6 +64,14 @@ void aktie::getEntries() {
 
     //return tmp;
 }
+/*aktie::aktie(std::string name, std::string shortname, int num)
+{
+    a_shortname = shortname;
+    a_name = name;
+    a_num = num;
+    /* --INSERT YOUR CODE HERE-- */
+// Constructor der Daten der Aktien
+//}
 
 aktie::~aktie()
 {
@@ -79,22 +84,74 @@ bool aktie::printAktie()
     return true;
 }
 
+void aktie::printArray(){ //printet alle Entries einer Node
+    for (int i = 0; i < arrayLength; i++){
+        cout << endl;
+        for (int j = 0; j < arrayDepth; j++){
+            cout << this->entries[i][j] << " /   ";
+        }
+    }
+    cout << endl;
+}
+
 std::string aktie::getName()
 {
-    return a_name;
+    return longName;
 }
+
 //new -> a_num getter
 int aktie::getAnum(){
     return a_num;
 }
 
-void aktie::deleteAktie(hashTable* nameTable, hashTable* shortTable)  //nameTable: vollen Namen short: kürzel
+std::string aktie::getShortName()
 {
-    std::string name = a_name;//holt sich derzeitige Aktie
-    int key = hashTable::toKey(name); //toKey static -> wandelt in hashwert(nummer)
-    int hash = hashTable::hash(key); //hash -> wandelt in index
-    hashNode* temp = nameTable->getNode(hash, name); //depth und name gespeichert, getNode: checkt auf index und Namen
-    temp->setAktie(NULL); //node wird NULL gesetzt
-    temp = nameTable->getNode(hash); //sucht das erste Element am Index
-    temp->changeDepth(-1); //depth wird um 1 verringert
+    return shortName;
+}
+
+bool aktie::deleteAktie(hashTable* nameTable, hashTable* shortTable)
+{
+    int namehash = hashTable::hash(hashTable::toKey(this->longName));
+    int shorthash = hashTable::hash(hashTable::toKey(this->shortName));
+
+    hashNode* temp = nameTable->getNode(namehash, this->longName, true);
+    hashNode* temp2 = shortTable->getNode(shorthash, this->shortName, false);
+    if(temp == NULL){
+        cout << "Error: couldnt find name" << endl;
+        return false;
+    } else if (temp2 == NULL){
+        cout << "Error: couldnt find shortname" << endl;
+        return false;
+    }
+    temp->setAktie(NULL);
+    temp = nameTable->getNode(namehash);
+
+    cout << "   Deleting from nameTable" << endl;
+    // cout << "Starting to shuffle" << endl;
+    if(nameTable->shuffle(namehash, nameTable)){
+        // cout << "Shuffle was successfull" << endl;
+    } else {
+        // cout << "Shuffle was unsuccessfull" << endl;
+        // cout << "decrease by: 1" << endl;
+        nameTable->getNode(namehash)->changeDepth(-1); //if something was deleted but nothing could be swapped, decrease the depth by 1
+        nameTable->cleanNode(hashTable::hash(namehash + hashTable::seq(nameTable->getNode(namehash)->getDepth()))); // cleans the last node at the maximum Depth
+    }
+
+    namehash = shorthash;
+    temp = temp2;
+    if(temp == NULL) return false;
+    temp->setAktie(NULL);
+    temp = shortTable->getNode(namehash);
+
+    cout << "   Deleting from shortTable" << endl;
+    // cout << "Starting to shuffle" << endl;
+    if(shortTable->shuffle(namehash, shortTable)){
+        // cout << "Shuffle was successfull" << endl;
+    } else {
+        // cout << "Shuffle was unsuccessfull" << endl;
+        // cout << "decrease by: 1" << endl;
+        shortTable->getNode(namehash)->changeDepth(-1); //if something was deleted but nothing could be swapped, decrease the depth by 1
+        shortTable->cleanNode(hashTable::hash(namehash + hashTable::seq(shortTable->getNode(namehash)->getDepth()))); // cleans the last node at the maximum Depth
+    }
+    return true;
 }

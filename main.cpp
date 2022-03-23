@@ -1,124 +1,42 @@
-//Files werden nur gelesen, wenn sie im cmake-build-debug sind
-//test
-
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <sstream>
+#include <fstream>
 
-#include "cmake-build-debug/classes/Hashtable.h"
+#include "Hashtable.h"
 #include "cmake-build-debug/classes/Aktie.h"
 #include "cmake-build-debug/classes/HashNode.h"
 
-#define arrayLength 254
-#define arrayDepth 7
 
 using namespace std;
 
-
-//toDo array Aktie done
-//toDo aus void get entries, in zwei funktionen einteilen -> eines das durchgeht, eines das array macht done
-
-//abspeichern? durch hash durchegehen -> Bei Eintrag speichern
-//importierte sachen abspeichern ?
-//toDo abspeichern in seperates file, teilweise done
-//save file über dateiname {key, dateiname} -> immer wieder importieren
-
-bool addAktie(hashTable*, hashNode*);
+bool addAktie(hashTable*, hashNode*, hashTable*);
 hashNode* convertToNode(aktie*);
-void Menue(hashTable*, hashTable*, bool saveState);
-void addInc();
+void Menue(hashTable*, hashTable*, bool savestate);
 
-
-class fileData{
-public:
-    string array[arrayLength][arrayDepth];
-};
-
-
-void getEntries(fileData *tmp){
-
-    //verfügbare files: AAPL.csv, AMZN.csv, BABA.csv (Alibaba), FB.csv, GOOG.csv, INTC.csv (Intel),
-    // MSFT.csv, NTFL.csv, NVDA.csv (Nvidia), TCEHY.csv (Tencent), //alle im data dir gespeichert
-
-    string filename, zeile, eintrag;
-
-    cout << "\nChoose file: FORMAT: 'data/FILENAME.csv'\n";
-    cin >> filename; //muss noch als path angegeben werden: data/"name des File".csv
-
-    fstream FILE;
-    FILE.open(filename);
-
-    if (FILE.is_open()){
-        cout << "\nFile offen";
-
-        int i = 0; //for array
-        int j;
-
-        while(getline(FILE, zeile)){ // var zeile: Eintrag bis newline-char
-
-            j = 0;
-            //cout << endl;
-            //nach jedem Durchgang, eine neue Zeile
-
-            stringstream zeileFormat(zeile); //wandelt string zeile in ein file-ähnliches Format
-
-            while(getline(zeileFormat, eintrag, ',')){// var eintrag: Wert wird bis zu einem Komma eingelesen
-                //cout << eintrag << " "; //debug
-                //einfügen in Hashtabelle Zeile
-                tmp -> array[i][j] = eintrag;
-                j++;
-            }
-            i++;
-        }
-    } else cout << "\nFile nicht offen";
-
-    //return tmp;
-}
-
-void printArray(fileData *tmp){ //printet alle Entries einer Node
-    for (int i = 0; i < arrayLength; i++){
-        cout << endl;
-        for (int j = 0; j < arrayDepth; j++){
-            cout << tmp -> array[i][j] << " /   ";
-        }
-    }
-}
-
-int main () {
-    bool saveState = false;
-    /*
-    fileData *test = new fileData;
-    test = getEntries(test);
-    printArray(test); */
-
-
+int main()
+{
+    bool saveState = false; //wird zum speichern benötigt
     hashTable nameTable;
     hashTable shortTable;
 
+    //addAktie(&nameTable, convertToNode("Google", "ggl", 10), &shortTable);
+    //addAktie(&nameTable, convertToNode("Facebook", "fb", 11), &shortTable);
+    //addAktie(&nameTable, convertToNode("Facebook", "fb", 12), &shortTable);
+    //addAktie(&nameTable, convertToNode("Facebook", "fb", 13), &shortTable);
+    //addAktie(&nameTable, convertToNode("Facebook", "fb", 14), &shortTable);
+    //addAktie(&nameTable, convertToNode("Facebook", "fb", 15), &shortTable);
 
-    cout << "Key: " << hashTable::hash(hashTable::toKey("Googles")) << endl;
-
-    //addAktie(&nameTable, convertToNode("Google", 10)); //10 ist ein random value
-    //addAktie(&nameTable, convertToNode("Facebook", 11));
-    //addAktie(&nameTable, convertToNode("Facebook", 12));
-
-    nameTable.printAktieAt(hashTable::hash(hashTable::toKey("Facebook")), "Facebook");
+    //nameTable.print AktieAt(hashTable::hash(hashTable::toKey("Facebook")), "Facebook", true);
     cout << "--------------------------------------" << endl;
     nameTable.printTable();
     cout << "--------------------------------------" << endl;
-    /*string input;
-
-    cout << "Enter Aktie to delete" << endl;;
-    cin >> input;
-    int hash = hashTable::hash(hashTable::toKey(input));
-    nameTable.getNode(hash)->getAktie()->deleteAktie(&nameTable, &shortTable);*/
 
     Menue(&nameTable, &shortTable, saveState);
 
-    cout << "--------------------------------------" << endl;
+    cout << "--------------End Table:--------------" << endl;
     nameTable.printTable();
-    cout << "--------------------------------------" << endl;
+    cout << "--------------End Table:--------------" << endl;
+    shortTable.printTable();
 
     return 0;
 }
@@ -126,73 +44,135 @@ int main () {
 void Menue(hashTable* nameTable, hashTable* shortTable, bool saveState)
 {
     char input;
-    do{ // Problem: man kommt aus der Schleife nicht raus
-        cout << "Select Action: (a)dd | (d)elete | (p)rint | (v)alues | (i)mport | (s)ave | (e)xit" << endl;
+    do{
+        cout << "Select Action: (a)dd | (d)elete | (p)rint | (i)mport | (s)ave | (e)xit | (c)lean" << endl;
         cin >> input;
         switch(input){
             case 'a':
-            case 'A':{
+            case 'A': /* --INSERT YOUR CODE HERE-- */{
                 aktie *stock = new aktie;
-                addAktie(nameTable, convertToNode(stock));
-                cout << "\nDEBUG\n";
-                stock -> printArray();
-            }
-                break;
+                addAktie(nameTable, convertToNode(stock), shortTable);
+                //cout << "\nDEBUG\n";
+                //stock -> printArray();
+            } break;
+                //user weiß wo file ist //user Shortname u. longname //neues AktienObjekt/* Neue Aktien hinzufügen von csv */ break;
             case 'd':
-            case 'D':   {string name;
-                cout << "Enter Aktie to delete" << endl;
+            case 'D':   {
+                char input2;
+                string name;
+                do{
+                    cout << "Delete by Name or ShortName (N)/(S)" << endl;
+                    cin >> input2;
+                    if(input2 == 'S') input2 = 's';
+                    if(input2 == 'N') input2 = 'n';
+                } while (input2 != 's' && input2 != 'n');
+                cout << "Enter Aktie to delete: ";
                 cin >> name;
-
-                int hash = hashTable::hash(hashTable::toKey(name));
-                nameTable->getNode(hash)->getAktie()->deleteAktie(nameTable, shortTable);
+                cout << "--------------------------------------" << endl;
+                switch(input2)
+                {
+                    case 's':   {hashNode* toDelte = shortTable->getNode(hashTable::hash(hashTable::toKey(name)), name, false);
+                        if(toDelte != NULL) {
+                            toDelte->getAktie()->deleteAktie(nameTable, shortTable);
+                            cout << "   Succesfully deleted" << endl;
+                        }}
+                        break;
+                    case 'n':   {hashNode* toDelete = nameTable->getNode(hashTable::hash(hashTable::toKey(name)), name, true);
+                        if(toDelete != NULL){
+                            toDelete->getAktie()->deleteAktie(nameTable, shortTable);
+                            cout << "   Succesfully deleted" << endl;
+                        }}
+                        break;
+                    default: cout << "Error at finding this aktie" << endl;
+                }
+                cout << "--------------------------------------" << endl;
             }break;
             case 'p':
-            case 'P': nameTable->printTable(); break;
+            case 'P':   cout << "---------------LongTable--------------" << endl;
+                nameTable->printTable();
+                cout << "--------------ShortTable--------------" << endl;
+                shortTable->printTable();
+                cout << "--------------------------------------" << endl;
+                break;
             case 'i':
-            case 'I': break;
+            case 'I': /* --INSERT YOUR CODE HERE-- */{
+                //string longName;
+                //cin >> longName;
+                //////////////////////
+                char input2;
+                string name;
+                do{
+                    cout << "Search by LongName or ShortName (N)/(S)" << endl;
+                    cin >> input2;
+                    if(input2 == 'S') input2 = 's';
+                    if(input2 == 'N') input2 = 'n';
+                } while (input2 != 's' && input2 != 'n');
+                cout << "Enter Stock to import: ";
+                cin >> name;
+                cout << "--------------------------------------" << endl;
+                switch(input2)
+                {
+                    case 's':   {
+                        hashNode *addCSV = shortTable -> getNode(hashTable::hash(hashTable::toKey(name)), name, false);
+                        addCSV -> getAktie() -> setFilename();
+                        cout << "   Succesfully imported" << endl;
+                    }
+                        break;
+                    case 'n':   {hashNode *addCSV = nameTable -> getNode(hashTable::hash(hashTable::toKey(name)), name, true);
+                        addCSV -> getAktie() -> setFilename();
+                        cout << "   Succesfully imported" << endl;
+                    }
+                        break;
+                    default: cout << "Error at finding this stock" << endl;
+                }
+                ////////////////////////////
+                //hashNode *addCSV = nameTable -> getNode(hashTable::hash(hashTable::toKey(longName)), longName, true);
+                //addCSV -> getAktie() -> setFilename();
+                //addCSV -> getAktie() -> printArray();
+            } break; /* Hashtabelle von eigener Datei importieren */ break;
             case 's':
-            case 'S': {
-
-                if(saveState) { remove("data/saveData.txt"); saveState = false;}
+            case 'S': {/* --INSERT YOUR CODE HERE-- */
+                remove("data/saveData.txt"); saveState = false;
                 nameTable ->saveTable(saveState);
                 saveState = true;
-            }   break;
+            }  break;
             case 'e':
             case 'E': break;
-            case 'v':
-            case 'V':{
-
-            } break; //values anhand von
-            default: input = 0;
+            case 'c':
+            case 'C':   nameTable->clean(); system("cls");
+                cout << "---------------LongTable--------------" << endl;
+                nameTable->printTable();
+                cout << "--------------ShortTable--------------" << endl;
+                shortTable->printTable();
+                cout << "--------------------------------------" << endl;
+                break;
+            default: break;
         }
-    } while (input != 0 && input != 'e' && input != 'E'); //eingabe endet nach e oder E
-
-
+    } while (input != 'e' && input != 'E');
 }
 
-bool addAktie(hashTable* myTable, hashNode* newNode){ //
-    int myhash = myTable->hash(myTable->toKey(newNode->getAktie()->getName()));
-    if(myTable->addAktie(myhash, newNode)){
-        cout << "Aktie was added" << endl;
+bool addAktie(hashTable* nameTable, hashNode* newNode, hashTable* shortTable){
+    hashNode* shortname = new hashNode(newNode->getAktie()); // Kopiert die Hashnode um sie in der zweiten Tabelle einfügen zu können mit eigener Depth
+
+    int namehash = hashTable::hash(hashTable::toKey(newNode->getAktie()->getName()));
+    int shorthash = hashTable::hash(hashTable::toKey(newNode->getAktie()->getShortName()));
+
+    if(nameTable->addAktie(namehash, newNode)){
+        cout << "!Aktie was added to nameTable!" << endl;
+
+        if(shortTable->addAktie(shorthash, shortname)){
+            cout << "!Aktie was added to shortTable!" << endl;
+        } else {
+            cout << "!Aktie couldnt be added to shortTable!" << endl;
+        }
         return true;
     } else {
-        cout << "Aktie couldnt be added" << endl;
+        cout << "!Aktie couldnt be added to nameTable!" << endl;
         return false;
     }
 }
 
-hashNode* convertToNode(aktie *stock){ //erstellt Hashnode mit neuer Aktie, gibt pointer zurück
-    return new hashNode (stock);
+hashNode* convertToNode(aktie *stock){//erstellt Hashnode mit neuer Aktie, gibt pointer zurück
+    return new hashNode(stock);
 }
 
-void addInc(){
-    string filename, shortName, longName;
-    cout << "\nBitte geben Sie den Pfad an, andem sich Ihr CSV File befindet:\n";
-    cin >> filename;
-
-    cout << "\nShortName:\n";
-    std::cin >> shortName;
-
-    cout << "\nLongName:\n";
-    std::cin >> longName;
-}

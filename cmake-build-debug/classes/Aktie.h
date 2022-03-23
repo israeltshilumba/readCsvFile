@@ -14,29 +14,37 @@ class hashNode;
 
 class aktie
 {
-    public:
-        aktie();
-        //aktie(std::string name, int num);
-        virtual ~aktie();
+public:
+    aktie();
+    //aktie(std::string name, std::string shortname, int num);
+    virtual ~aktie();
 
-        bool printAktie(); //schreibt name und number
-        std::string getName();
-        int getAnum();
-        void deleteAktie(hashTable* nameTable, hashTable* shortTable);
-        //new -> Hier ist das csv File in Form eines Arrays gespeichert
-        std::string entries[arrayLength][arrayDepth];
-        void getEntries();
-        void printArray();
-    protected:
+    bool printAktie();
+    int getAnum();
+    std::string getName();
+    std::string getShortName();
+    void printArray();//new
+    bool deleteAktie(hashTable* nameTable, hashTable* shortTable);
+    void getEntries();
+    std::string entries[arrayLength][arrayDepth];
+    void setFilename();
 
-    private:
-        std::string a_name;
+protected:
 
-        std::string filename; //new for filename
-        std::string shortName;
-        std::string longName;
-        int a_num;
+private:
+    std::string a_name;
 
+    std::string filename; //new for filename
+    std::string shortName;
+    std::string longName;
+    int a_num;
+    /*
+    std::string a_name;
+    std::string a_shortname;
+    int a_num;*/
+    /* --INSERT YOUR CODE HERE-- */
+    // Die Daten der Aktien
 };
+
 
 #endif // AKTIE_H
