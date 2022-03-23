@@ -140,10 +140,12 @@ void hashTable::printTable() //alle Aktien
 }
 //new Tabelle wird in ein Textfile abgespeichert
 void hashTable::saveTable(bool saveState){ //Tabelle wird in Form der printTable() methode gespeichert, wird bisher nur appended
+
     string filename;
 
     filename = "data/saveData.txt";
     fstream FILE;
+
 
 
     if (!saveState){
@@ -166,7 +168,7 @@ void hashTable::saveTable(bool saveState){ //Tabelle wird in Form der printTable
             }
         } else cout << "\nFile could not open";
     } else {
-        remove("filename");
-
+        remove("data/saveData.txt");
+    FILE.close();
     }
 }

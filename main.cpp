@@ -25,8 +25,9 @@ using namespace std;
 //save file über dateiname {key, dateiname} -> immer wieder importieren
 
 bool addAktie(hashTable*, hashNode*);
-hashNode* convertToNode(string, int);
+hashNode* convertToNode(aktie*);
 void Menue(hashTable*, hashTable*, bool saveState);
+void addInc();
 
 
 class fileData{
@@ -95,11 +96,12 @@ int main () {
     hashTable nameTable;
     hashTable shortTable;
 
+
     cout << "Key: " << hashTable::hash(hashTable::toKey("Googles")) << endl;
 
-    addAktie(&nameTable, convertToNode("Google", 10)); //10 ist ein random value
-    addAktie(&nameTable, convertToNode("Facebook", 11));
-    addAktie(&nameTable, convertToNode("Facebook", 12));
+    //addAktie(&nameTable, convertToNode("Google", 10)); //10 ist ein random value
+    //addAktie(&nameTable, convertToNode("Facebook", 11));
+    //addAktie(&nameTable, convertToNode("Facebook", 12));
 
     nameTable.printAktieAt(hashTable::hash(hashTable::toKey("Facebook")), "Facebook");
     cout << "--------------------------------------" << endl;
@@ -129,10 +131,16 @@ void Menue(hashTable* nameTable, hashTable* shortTable, bool saveState)
         cin >> input;
         switch(input){
             case 'a':
-            case 'A': break;
+            case 'A':{
+                aktie *stock = new aktie;
+                addAktie(nameTable, convertToNode(stock));
+                cout << "\nDEBUG\n";
+                stock -> printArray();
+            }
+                break;
             case 'd':
             case 'D':   {string name;
-                cout << "Enter Aktie to delete" << endl;;
+                cout << "Enter Aktie to delete" << endl;
                 cin >> name;
 
                 int hash = hashTable::hash(hashTable::toKey(name));
@@ -152,7 +160,9 @@ void Menue(hashTable* nameTable, hashTable* shortTable, bool saveState)
             case 'e':
             case 'E': break;
             case 'v':
-            case 'V': break; //values anhand von
+            case 'V':{
+
+            } break; //values anhand von
             default: input = 0;
         }
     } while (input != 0 && input != 'e' && input != 'E'); //eingabe endet nach e oder E
@@ -171,6 +181,18 @@ bool addAktie(hashTable* myTable, hashNode* newNode){ //
     }
 }
 
-hashNode* convertToNode(string name, int value){ //erstellt Hashnode mit neuer Aktie, gibt pointer zurück
-    return new hashNode(new aktie(name, value));
+hashNode* convertToNode(aktie *stock){ //erstellt Hashnode mit neuer Aktie, gibt pointer zurück
+    return new hashNode (stock);
+}
+
+void addInc(){
+    string filename, shortName, longName;
+    cout << "\nBitte geben Sie den Pfad an, andem sich Ihr CSV File befindet:\n";
+    cin >> filename;
+
+    cout << "\nShortName:\n";
+    std::cin >> shortName;
+
+    cout << "\nLongName:\n";
+    std::cin >> longName;
 }

@@ -2,16 +2,70 @@
 #include <stdlib.h>
 #include "Aktie.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
 aktie::aktie(){
+    cout << "\nBitte geben Sie den Pfad an, andem sich Ihr CSV File befindet:\n";
+    cin >> this->filename;
+
+    cout << "\nShortName:\n";
+    std::cin >> this->shortName;
+
+    cout << "\nLongName:\n";
+    std::cin >> this->longName;
+
+    getEntries();
 };
 
-aktie::aktie(std::string name, int num)
-{
-    a_name = name;
-    a_num = num;
+void aktie::printArray(){ //printet alle Entries einer Node
+    for (int i = 0; i < arrayLength; i++){
+        cout << endl;
+        for (int j = 0; j < arrayDepth; j++){
+            cout << this->entries[i][j] << " /   ";
+        }
+    }
+    cout << endl;
+}
+
+void aktie::getEntries() {
+    //verfügbare files: AAPL.csv, AMZN.csv, BABA.csv (Alibaba), FB.csv, GOOG.csv, INTC.csv (Intel),
+    // MSFT.csv, NTFL.csv, NVDA.csv (Nvidia), TCEHY.csv (Tencent), //alle im data dir gespeichert
+
+    string /*filename,*/ zeile, eintrag;
+
+    //cout << "\nChoose file: FORMAT: 'data/FILENAME.csv'\n";
+
+    fstream FILE;
+    FILE.open(filename);
+
+    if (FILE.is_open()){
+        cout << "\nFile offen";
+
+        int i = 0; //for array
+        int j;
+
+        while(getline(FILE, zeile)){ // var zeile: Eintrag bis newline-char
+
+            j = 0;
+            //cout << endl;
+            //nach jedem Durchgang, eine neue Zeile
+
+            stringstream zeileFormat(zeile); //wandelt string zeile in ein file-ähnliches Format
+
+            while(getline(zeileFormat, eintrag, ',')){// var eintrag: Wert wird bis zu einem Komma eingelesen
+                //cout << eintrag << " "; //debug
+                //einfügen in Hashtabelle Zeile
+                entries[i][j] = eintrag;
+                j++;
+            }
+            i++;
+        }
+    } else cout << "\nFile nicht offen";
+
+    //return tmp;
 }
 
 aktie::~aktie()
@@ -21,7 +75,7 @@ aktie::~aktie()
 
 bool aktie::printAktie()
 {
-    cout << a_name << " : " << a_num << endl;
+    cout << this->longName << " : " << this->shortName << endl;
     return true;
 }
 

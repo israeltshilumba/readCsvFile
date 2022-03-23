@@ -16,7 +16,7 @@ class aktie
 {
     public:
         aktie();
-        aktie(std::string name, int num);
+        //aktie(std::string name, int num);
         virtual ~aktie();
 
         bool printAktie(); //schreibt name und number
@@ -24,11 +24,17 @@ class aktie
         int getAnum();
         void deleteAktie(hashTable* nameTable, hashTable* shortTable);
         //new -> Hier ist das csv File in Form eines Arrays gespeichert
-        //std::string entries[arrayLength][arrayDepth];
+        std::string entries[arrayLength][arrayDepth];
+        void getEntries();
+        void printArray();
     protected:
 
     private:
         std::string a_name;
+
+        std::string filename; //new for filename
+        std::string shortName;
+        std::string longName;
         int a_num;
 
 };
